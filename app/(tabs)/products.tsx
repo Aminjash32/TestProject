@@ -16,7 +16,7 @@ import {
 import "react-native-css-interop/jsx-runtime";
 
 export default function ProductsListing() {
-  const { products, categories, loading } = useProducts();
+  const { products, categories, loading} = useProducts();
 
   const [filters, setFilters] = useState<FilterState>({
     search: "",
@@ -24,7 +24,7 @@ export default function ProductsListing() {
     sort: null,
   });
 
-  const debouncedSearch = useDebounce(filters.search, 400);
+  const debouncedSearch = useDebounce(filters.search, 500);
 
   const filteredProducts = products
     .filter((p) =>
@@ -99,7 +99,7 @@ export default function ProductsListing() {
       {/* Products */}
       {loading ? (
         <ActivityIndicator size={"large"} style={{
-          display: "flex",
+          flex: 1,
           justifyContent: "center",
           alignItems: "center"
         }} />
@@ -138,6 +138,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   listContent: {
-    paddingBottom: 120,
   },
 });

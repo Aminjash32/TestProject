@@ -16,13 +16,13 @@ export default function RootLayout() {
         }}
       />
 
-      {/* Details screen – HEADER ENABLED */}
+      {/* Details screen */}
       <Stack.Screen
         name="details/[id]"
         options={{
           title: "Product Details",
           headerBackTitle: "Back",
-          headerTitleAlign: "center",
+          headerTitleAlign: "left",
         }}
       />
     </Stack>

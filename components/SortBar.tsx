@@ -19,22 +19,16 @@ export default function SortBar({
   onClear,
 }: Props) {
   const options: { label: string; value: SortOption }[] = [
-    { label: "Price ↑", value: "PRICE_LOW_HIGH" },
-    { label: "Price ↓", value: "PRICE_HIGH_LOW" },
+    { label: "Low to High", value: "PRICE_LOW_HIGH" },
+    { label: "High to Low", value: "PRICE_HIGH_LOW" },
     { label: "A–Z", value: "NAME_A_Z" },
     { label: "Z–A", value: "NAME_Z_A" },
   ];
 
   return (
     <View style={styles.container}>
-      {/* LEFT: Sort options */}
+      {/* Sort options */}
       <View style={styles.left}>
-        <FontAwesome
-          name="sort"
-          size={16}
-          color="#6B7280"
-          style={styles.icon}
-        />
 
         {options.map((opt) => {
           const isActive = selected === opt.value;
@@ -61,7 +55,7 @@ export default function SortBar({
         })}
       </View>
 
-      {/* RIGHT: Clear button */}
+      {/* Clear button */}
       {selected && (
         <Pressable
           onPress={onClear}
@@ -123,8 +117,8 @@ const styles = StyleSheet.create({
   clearButton: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 6,
-    paddingHorizontal: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 2,
   },
   clearText: {
     marginLeft: 4,

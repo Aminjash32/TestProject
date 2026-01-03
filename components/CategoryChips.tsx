@@ -62,10 +62,10 @@ export default function CategoryChips({
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 12,
+    marginTop: 14,
   },
   listContainer: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
   },
   chip: {
     marginRight: 8,

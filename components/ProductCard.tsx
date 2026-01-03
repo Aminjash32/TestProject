@@ -2,13 +2,7 @@ import { Product } from "@/src/types/productInterface";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import { memo } from "react";
-import {
-  Platform,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 
 interface ProductCardProps {
   product: Product;
@@ -25,7 +19,7 @@ function ProductCard({ product }: ProductCardProps) {
           params: { id: product.id.toString() },
         })
       }
-      android_ripple={{ color: "#e5e7eb" }}
+      android_ripple={{ color: "#b9b9b9ff" }}
       style={({ pressed }) => [
         styles.card,
         pressed && styles.pressed,
@@ -47,31 +41,18 @@ function ProductCard({ product }: ProductCardProps) {
 
         {/* Text Container */}
         <View style={styles.content}>
-          {/* Category */}
-          <View style={styles.categoryBadge}>
-            <Text style={styles.categoryText}>
-              {product.category}
-            </Text>
-          </View>
-
           {/* Title */}
-          <Text
-            numberOfLines={2}
-            style={styles.title}
-          >
+          <Text numberOfLines={2} style={styles.title}>
             {product.title}
           </Text>
 
           {/* Price + CTA */}
           <View style={styles.footer}>
-            <Text style={styles.price}>
-              ₹ {product.price}
-            </Text>
+            <Text style={styles.price}>₹ {product.price}</Text>
 
-            <View style={styles.cta}>
-              <Text style={styles.ctaText}>
-                View
-              </Text>
+            {/* Category */}
+            <View style={styles.categoryBadge}>
+              <Text style={styles.categoryText}>{product.category}</Text>
             </View>
           </View>
         </View>
@@ -84,12 +65,9 @@ export default memo(ProductCard);
 
 const styles = StyleSheet.create({
   card: {
-    marginHorizontal: 16,
-    marginVertical: 12,
-    borderRadius: 16,
+    marginHorizontal: 2,
+    borderRadius: 2,
     backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#f3f4f6", // gray-100
   },
   pressed: {
     opacity: 0.95,
@@ -100,45 +78,45 @@ const styles = StyleSheet.create({
   row: {
     width: "100%",
     flexDirection: "row",
-    padding: 16,
-    gap: 16,
-    alignItems: "flex-start",
+    padding: 12,
+    gap: 12,
+    alignItems: "center",
   },
   imageWrapper: {
-    height: 96,
-    width: 96,
+    height: 90,
+    width: 90,
     borderRadius: 12,
     backgroundColor: "#f3f4f6",
     alignItems: "center",
     justifyContent: "center",
   },
   image: {
-    width: 72,
-    height: 72,
-    borderRadius: 8,
+    width: 70,
+    height: 70,
   },
   content: {
     flex: 1,
+    padding: 6,
   },
   categoryBadge: {
     alignSelf: "flex-start",
-    marginBottom: 4,
+    marginTop: 6,
     paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingVertical: 8,
     borderRadius: 999,
-    backgroundColor: "#fff7ed", // orange-50
+    backgroundColor: "#fff7ed", 
   },
   categoryText: {
     fontSize: 11,
     fontWeight: "600",
-    textTransform: "uppercase",
+    textTransform: "capitalize",
     letterSpacing: 0.5,
-    color: "#ea580c", // orange-600
+    color: "#ea580c", 
   },
   title: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "600",
-    color: "#111827", // gray-900
+    color: "#111827", 
     lineHeight: 20,
   },
   footer: {
@@ -150,17 +128,6 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#111827",
-  },
-  cta: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 999,
-    backgroundColor: "#ea580c",
-  },
-  ctaText: {
-    fontSize: 12,
-    fontWeight: "600",
-    color: "#ffffff",
+    color: "#ea580c",
   },
 });
