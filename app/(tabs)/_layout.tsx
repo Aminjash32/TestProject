@@ -1,8 +1,7 @@
+import Colors from "@/constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import { SearchBar } from "react-native-screens";
 
 function TabBarIcon({
   name,
@@ -18,15 +17,17 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.light.tint,
+        },
         headerShown: true,
-        tabBarActiveTintColor: "#000",
-        tabBarInactiveTintColor: "#9CA3AF",
+        tabBarActiveTintColor: Colors.light.tabBarActiveTintColor,
+        tabBarInactiveTintColor: Colors.light.tabBarInactiveTintColor,
 
         tabBarStyle: {
-          backgroundColor: "#ffffff",
+          backgroundColor: Colors.light.background,
           borderTopWidth: 0.5,
-          borderTopColor: "#E5E7EB",
-
+          borderTopColor: Colors.light.borderTopColor,
         },
 
         tabBarLabelStyle: {
@@ -38,6 +39,10 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
           headerShadowVisible: false,
           title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
@@ -46,30 +51,20 @@ export default function TabLayout() {
       <Tabs.Screen
         name="products"
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="shopping-cart" color={color} />,
-          headerShown: true,
-          headerTitle: () => null, // remove title
-          headerStyle: {
-            backgroundColor: "#ffffff",
-          },
-          headerShadowVisible: false,
-          headerLeft: () => null,
-          headerRight: () => null,
-          header: () => (
-            <View style={headerStyles.header}>
-              <SearchBar />
-            </View>
+          title: "Products",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="shopping-cart" color={color} />
           ),
+
+          headerShown: true,
+          headerShadowVisible: false,
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
         }}
       />
     </Tabs>
   );
 }
 
-const headerStyles = StyleSheet.create({
-  header: {
-    paddingHorizontal: 16,
-    paddingTop: 40,
-    backgroundColor: "#ffffff",
-  },
-});

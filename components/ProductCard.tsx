@@ -26,9 +26,7 @@ function ProductCard({ product }: ProductCardProps) {
         Platform.OS === "android" && styles.androidElevation,
       ]}
     >
-      {/* Row Layout */}
       <View style={styles.row}>
-        {/* Image */}
         <View style={styles.imageWrapper}>
           <Image
             source={product.image}
@@ -39,18 +37,14 @@ function ProductCard({ product }: ProductCardProps) {
           />
         </View>
 
-        {/* Text Container */}
         <View style={styles.content}>
-          {/* Title */}
           <Text numberOfLines={2} style={styles.title}>
             {product.title}
           </Text>
 
-          {/* Price + CTA */}
           <View style={styles.footer}>
             <Text style={styles.price}>₹ {product.price}</Text>
 
-            {/* Category */}
             <View style={styles.categoryBadge}>
               <Text style={styles.categoryText}>{product.category}</Text>
             </View>
@@ -66,14 +60,13 @@ export default memo(ProductCard);
 const styles = StyleSheet.create({
   card: {
     marginHorizontal: 2,
-    borderRadius: 2,
     backgroundColor: "#ffffff",
   },
   pressed: {
     opacity: 0.95,
   },
   androidElevation: {
-    elevation: 3,
+    elevation: 1,
   },
   row: {
     width: "100%",
@@ -104,19 +97,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderRadius: 999,
-    backgroundColor: "#fff7ed", 
+    backgroundColor: "#fff7ed",
   },
   categoryText: {
     fontSize: 11,
     fontWeight: "600",
     textTransform: "capitalize",
     letterSpacing: 0.5,
-    color: "#ea580c", 
+    color: "#ea580c",
   },
   title: {
     fontSize: 14,
     fontWeight: "600",
-    color: "#111827", 
+    color: "#111827",
     lineHeight: 20,
   },
   footer: {

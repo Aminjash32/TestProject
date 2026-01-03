@@ -27,7 +27,6 @@ export default function SortBar({
 
   return (
     <View style={styles.container}>
-      {/* Sort options */}
       <View style={styles.left}>
 
         {options.map((opt) => {
@@ -55,7 +54,6 @@ export default function SortBar({
         })}
       </View>
 
-      {/* Clear button */}
       {selected && (
         <Pressable
           onPress={onClear}
@@ -94,10 +92,13 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   chip: {
+        justifyContent: "center",
+    alignItems: "center",
     marginRight: 8,
     marginBottom: 8,
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     paddingVertical: 6,
+    height: 35,
     borderRadius: 999,
     borderWidth: 1,
     borderColor: "#d1d5db",

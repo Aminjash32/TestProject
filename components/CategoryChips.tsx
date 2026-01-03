@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   chip: {
     marginRight: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
     paddingVertical: 8,
     height: 40,
     borderRadius: 999,

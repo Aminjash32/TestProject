@@ -15,26 +15,3 @@ export const getRequest = async <T>(
   const res = await api.get<T>(url, config);
   return res.data;
 };
-
-// export const postRequest = async <T, B = unknown>(
-//   url: string,
-//   body: B
-// ): Promise<T> => {
-//   const res = await api.post<T>(url, body);
-//   return res.data;
-// };
-
-// export const patchRequest = async <T, B = unknown>(
-//   url: string,
-//   body: B
-// ): Promise<T> => {
-//   const res = await api.patch<T>(url, body);
-//   return res.data;
-// };
-
-// export const deleteRequest = async <T>(
-//   url: string
-// ): Promise<T> => {
-//   const res = await api.delete<T>(url);
-//   return res.data;
-// };

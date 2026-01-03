@@ -1,30 +1,39 @@
+import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   return (
-    <Stack
-      screenOptions={{
-        statusBarHidden: true,
-        animation: "slide_from_right",
-      }}
-    >
-      {/* Tabs group – NO HEADER */}
-      <Stack.Screen
-        name="(tabs)"
-        options={{
-          headerShown: false,
+    <SafeAreaProvider>
+      <Stack
+        screenOptions={{
+          animation: "slide_from_right",
+          statusBarHidden: false,
         }}
-      />
+      >
+        <Stack.Screen
+          name="(tabs)"
+          options={{
+            headerShown: false,
+          }}
+        />
 
-      {/* Details screen */}
-      <Stack.Screen
-        name="details/[id]"
-        options={{
-          title: "Product Details",
-          headerBackTitle: "Back",
-          headerTitleAlign: "left",
-        }}
-      />
-    </Stack>
+        <Stack.Screen
+          name="details/[id]"
+          options={{
+            title: "Product Details",
+            headerTitleAlign: "left",
+            headerShadowVisible: false,
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerStyle: {
+              backgroundColor: Colors.light.tint,
+            },
+          }}
+        />
+      </Stack>
+    </SafeAreaProvider>
   );
 }

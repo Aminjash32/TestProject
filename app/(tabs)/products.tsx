@@ -2,6 +2,7 @@ import CategoryChips from "@/components/CategoryChips";
 import ProductCard from "@/components/ProductCard";
 import SearchBar from "@/components/SearchBar";
 import SortBar from "@/components/SortBar";
+import Colors from "@/constants/Colors";
 import { useProducts } from "@/src/hooks/UseProducts";
 import { useDebounce } from "@/src/hooks/useDebounce";
 import { FilterState } from "@/src/types/fitlerOptions";
@@ -48,7 +49,7 @@ export default function ProductsListing() {
 
   return (
     <View style={styles.container}>
-      {/* Search */}
+  
       <View style={styles.searchContainer}>
         <SearchBar
           value={filters.search}
@@ -67,7 +68,7 @@ export default function ProductsListing() {
         />
       </View>
 
-      {/* Categories */}
+      {/* Categories filter */}
       <CategoryChips
         categories={categories}
         selected={filters.category}
@@ -79,7 +80,7 @@ export default function ProductsListing() {
         }
       />
 
-      {/* Sort */}
+      {/* Sort filters */}
       <SortBar
         selected={filters.sort}
         onSelect={(sort) =>
@@ -98,7 +99,7 @@ export default function ProductsListing() {
 
       {/* Products */}
       {loading ? (
-        <ActivityIndicator size={"large"} style={{
+        <ActivityIndicator size={"large"} color={Colors.light.tint}  style={{
           flex: 1,
           justifyContent: "center",
           alignItems: "center"
@@ -110,9 +111,9 @@ export default function ProductsListing() {
       ) : (
         <FlatList
           data={filteredProducts}
+          alwaysBounceVertical = {true}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <ProductCard product={item} />}
-          contentContainerStyle={styles.listContent}
         />
       )}
     </View>
@@ -122,7 +123,8 @@ export default function ProductsListing() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    
+    backgroundColor: Colors.light.background
   },
   searchContainer: {
     paddingHorizontal: 16,
@@ -136,7 +138,5 @@ const styles = StyleSheet.create({
   emptyText: {
     color: "#6B7280",
     fontSize: 14,
-  },
-  listContent: {
   },
 });
