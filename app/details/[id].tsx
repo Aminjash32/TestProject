@@ -1,16 +1,10 @@
+import Loader from "@/components/Loader";
 import Colors from "@/constants/Colors";
-import { useProducts } from "@/src/hooks/UseProducts";
+import { useProducts } from "@/src/hooks/useProducts";
 import { Image } from "expo-image";
-import { useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
-import {
-  ActivityIndicator,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function ProductDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -25,18 +19,15 @@ export default function ProductDetailsScreen() {
   if (loading || !productDetails) {
     return (
       <View style={styles.loader}>
-        <ActivityIndicator size="large" color={Colors.light.tint} />
+        <Loader />
       </View>
     );
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
-
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-
-      >
+    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <Stack.Screen options={{ title: productDetails.title }} />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.imageWrapper}>
           <Image
             source={productDetails.image}
@@ -47,24 +38,20 @@ export default function ProductDetailsScreen() {
           />
         </View>
 
-       <View style={styles.content}>
+        <View style={styles.content}>
           <Text style={styles.title}>{productDetails.title}</Text>
 
           <View style={styles.priceRow}>
             <Text style={styles.price}>₹ {productDetails.price}</Text>
 
             <View style={styles.categoryBadge}>
-              <Text style={styles.categoryText}>
-                {productDetails.category}
-              </Text>
+              <Text style={styles.categoryText}>{productDetails.category}</Text>
             </View>
           </View>
 
           <View style={styles.divider} />
 
-          <Text style={styles.description}>
-            {productDetails.description}
-          </Text>
+          <Text style={styles.description}>{productDetails.description}</Text>
         </View>
       </ScrollView>
 
@@ -72,10 +59,7 @@ export default function ProductDetailsScreen() {
       <View style={styles.bottomCTA}>
         <Pressable
           onPress={() => {}}
-          style={({ pressed }) => [
-            styles.btn,
-            pressed && styles.btnPressed,
-          ]}
+          style={({ pressed }) => [styles.btn, pressed && styles.btnPressed]}
         >
           <Text style={styles.btnText}>Buy Now</Text>
         </Pressable>
@@ -83,7 +67,6 @@ export default function ProductDetailsScreen() {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   loader: {
@@ -182,7 +165,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 16,
     marginVertical: 20,
-    elevation: 3,
     shadowColor: Colors.light.tint,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.25,

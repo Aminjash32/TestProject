@@ -1,18 +1,18 @@
 import CategoryChips from "@/components/CategoryChips";
+import Loader from "@/components/Loader";
 import ProductCard from "@/components/ProductCard";
 import SearchBar from "@/components/SearchBar";
 import SortBar from "@/components/SortBar";
 import Colors from "@/constants/Colors";
-import { useProducts } from "@/src/hooks/UseProducts";
 import { useDebounce } from "@/src/hooks/useDebounce";
+import { useProducts } from "@/src/hooks/useProducts";
 import { FilterState } from "@/src/types/fitlerOptions";
 import { useState } from "react";
 import {
-  ActivityIndicator,
   FlatList,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 import "react-native-css-interop/jsx-runtime";
 
@@ -99,11 +99,7 @@ export default function ProductsListing() {
 
       {/* Products */}
       {loading ? (
-        <ActivityIndicator size={"large"} color={Colors.light.tint}  style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center"
-        }} />
+        <Loader/>
       ) : filteredProducts.length === 0 ? (
         <View style={styles.emptyState}>
           <Text style={styles.emptyText}>No results found</Text>

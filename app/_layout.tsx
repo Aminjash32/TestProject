@@ -21,7 +21,6 @@ export default function RootLayout() {
         <Stack.Screen
           name="details/[id]"
           options={{
-            title: "Product Details",
             headerTitleAlign: "left",
             headerShadowVisible: false,
             headerTintColor: "#fff",

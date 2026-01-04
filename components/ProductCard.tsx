@@ -2,7 +2,7 @@ import { Product } from "@/src/types/productInterface";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import { memo } from "react";
-import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface ProductCardProps {
   product: Product;
@@ -19,12 +19,7 @@ function ProductCard({ product }: ProductCardProps) {
           params: { id: product.id.toString() },
         })
       }
-      android_ripple={{ color: "#b9b9b9ff" }}
-      style={({ pressed }) => [
-        styles.card,
-        pressed && styles.pressed,
-        Platform.OS === "android" && styles.androidElevation,
-      ]}
+      style={({ pressed }) => [styles.card, pressed && styles.pressed]}
     >
       <View style={styles.row}>
         <View style={styles.imageWrapper}>
@@ -62,12 +57,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     backgroundColor: "#ffffff",
   },
-  pressed: {
-    opacity: 0.95,
-  },
-  androidElevation: {
-    elevation: 1,
-  },
+  pressed: { opacity: 0.85, transform: [{ scale: 0.98 }] },
   row: {
     width: "100%",
     flexDirection: "row",

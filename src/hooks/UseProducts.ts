@@ -53,5 +53,6 @@ export function useProducts() {
     loading,
     fetchProducts,
     fetchProductById,
+    fetchCategories,
   };
 }
